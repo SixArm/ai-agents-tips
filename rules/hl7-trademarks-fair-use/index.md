@@ -8,4 +8,4 @@ Include the following disclaimer on the webpages, material and other locations w
 
 Please refer to the Fast Healthcare Interoperability Resources as the "HL7® FHIR® standard". When referencing the HL7® FHIR® standard in a website, document, presentation, or otherwise in a place of prominence, refer to it as the "HL7® FHIR® standard". In subsequent uses, please refer to it as the "HL7® FHIR® standard" or "HL7® FHIR®", using the ® symbol as often as is practical, at least once on each page of printed matter, generally in connection with the first or dominant usage.
 
-Assurance: create automatic tests that confirm.
+Assurance: create automatic tests to verify this works.
