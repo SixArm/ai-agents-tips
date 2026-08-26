@@ -7,3 +7,5 @@ Always include the trademark registration mark® after the first use of word mar
 Include the following disclaimer on the webpages, material and other locations where such marks are used: "HL7®, and FHIR® are the registered trademarks of Health Level Seven International and their use of these trademarks does not constitute an endorsement by HL7."
 
 Please refer to the Fast Healthcare Interoperability Resources as the "HL7® FHIR® standard". When referencing the HL7® FHIR® standard in a website, document, presentation, or otherwise in a place of prominence, refer to it as the "HL7® FHIR® standard". In subsequent uses, please refer to it as the "HL7® FHIR® standard" or "HL7® FHIR®", using the ® symbol as often as is practical, at least once on each page of printed matter, generally in connection with the first or dominant usage.
+
+Assurance: create automatic tests that confirm.
