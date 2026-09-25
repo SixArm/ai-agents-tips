@@ -5,28 +5,15 @@ Translate content into multiple locales.
 How this site supports multiple locales end to end: content, web
 routing, UI chrome, and bugs.
 
-Locales:
+Read locales via file `locales.tsv`.
 
-| code   | slug | exonym                  | endonym |
-| ------ |-| ----------------------- | ------- |
-| en-001 | en | English                 |         |
-| cy-001 | cy | Cymraeg         |         |
-| zh-001 | zh | Chinese         |         |
-| hi-001 | hi | Hindi                   |         |
-| ar-001 | ar | Arabic                  |         |
-| es-001 | es | Spanish                 |         |
-| fr-001 | fr | French          |         |
-| ru-001 | ru | Russian         |         |
-| bn-001 | bn | Bengali         |         |
-| pt-001 | pt | Portuguese      |         |
-| id-001 | id | Indonesian      |         |
-| ur-001 | ur | Urdu            |         |
-| de-001  | de |  German        |         |
-| it-001  | it |  Italian        |         |
-| ga-001 | ga | Irish         |         |
-| sv-001  | sv |  Swedish        |         |
-| ko-001 | ko | Korean         |         |
-| ja-001  | ja |  Japanese - Japan        |         |
+Locale code priority order:
+
+- en
+- cy
+- zh
+- sp
+- ar
 
 ## .locale-peer.id file
 
@@ -104,7 +91,7 @@ Nothing in the site assumes slugs match across locales.
 Bug: matched topic slugs with `[\w.-]+` (ASCII word chars only). Any locale with
 an accented or native-script slug (Spanish, French, Russian, Chinese, Arabic,
 Welsh, Hindi, Bengali, Portuguese, Indonesian, Urdu) silently failed peer-id
-resolution and cross-topic links. 
+resolution and cross-topic links.
 
 Fix by widening the slug capture group to `[^/]+`.
 
@@ -112,7 +99,7 @@ Fix by widening the slug capture group to `[^/]+`.
 
 Bug: code and content always read a single top-level `/README.md` for title,
 intro, "New here?" picks, part headings, and blurbs — only topic _links_ were
-ever localized. 
+ever localized.
 
 Fix: populate the previously-empty `locales/<code>/index.md` per locale.
 
