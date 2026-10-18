@@ -9,11 +9,14 @@ Read locales via file `locales.tsv`.
 
 Locale code priority order:
 
-- en
-- cy
-- zh
-- sp
-- ar
+- en-001
+- en-us
+- en-gb
+- en-gb-oxendict
+- cy-gb (then copy to cy-001)
+- zh-cn (then copy to zh-001)
+- ar-001
+- hi-in (then copy to hi-001)
 
 ## .locale-peer.id file
 
@@ -127,3 +130,242 @@ Fix: have `locales/[locale]/+layout.server.js` supply this locale's own title,
 which overrides the root layout's canonical one via SvelteKit's merged
 `page.data` on any route under `/locales/<locale>/` — the root picker and
 `/about/` (no locale in the URL) correctly keep the canonical English title.
+
+## Defer to do manually
+
+Goal: translate our projects into locales; work serially NOT subagents.
+
+Verify project website "https://<project>.github.io/" works and page has translations (and fix any missing or errors):
+
+- hero headline
+- hero subheadline
+- hero one-paragraph introduction
+- if the project is lily-design-system then show icons of frameworks
+- hero one-sentence "Translations: " with comma list of *-001 translation locale endodyms; example using locale en-001: "Translations: العربية, বাংলা, Cymraeg, Deutsch, English, Español, Français, हिन्दी, Bahasa Indonesia, 日本語, 한국어, Português, Русский, اردو, 中文"
+- each pickerbar button: hover changes the color
+- each pickerbar button: dropdown appears under the button, and does not shift the page
+- has file `https://<project>.github.io/sitemap.xml` that is a site map XML of the website
+
+For each locale in order:
+
+- en-001
+- en-us
+- en-gb
+- zh-cn then copy to zh-001
+- hi-in then copy to hi-001
+- cy-gb then copy to cy-001
+- ar-001
+- es-001
+- fr-001
+- ru-001
+- bn-001
+- id-001
+- ja-jp then copy to ja-001
+- ko-kr then copy to ko-001
+- sw-tz then copy to sw-001
+- sv-se then copy to sv-001
+- nl-nl then copy to nl-001
+- is-is then copy to is-001
+
+Verify project locale works (and fix any missing or errors)
+
+- has file `/locales/<locale>/sitemap.xml` that is a sitemap of the subdirectory routes
+- has all its content files
+- each `/locales/<locale>/` subdirectory contains tracking file `.locale-peer-id`
+- each `/locales/<locale>/` subdirectory segment is translated into language and character set (not merely romanized)
+
+If project is missing a locale:
+
+- create the locale and translate the content serially NOT subagents.
+- commit and push and publish
+- verify browser "https://<project>.github.io/<locale>/" successfully renders the locale.
+
+Verify project locale website "https://<project>.github.io/<locale>/" works and page has translations (and fix any missing or errors):
+
+- hero headline
+- hero subheadline
+- hero one-paragraph introduction
+- hero one-sentence "Translations: " with comma list of translation locale endodyms; example using locale en-001: "Translations: العربية, বাংলা, Cymraeg, Deutsch, English, Español, Français, हिन्दी, Bahasa Indonesia, 日本語, 한국어, Português, Русский, اردو, 中文"
+
+Continue until all complete.
+
+## Stop
+
+More locales:
+
+- de-001
+- pt-001
+- ur-001
+- bn-001
+- da-001
+- et-ee then copy to et-001
+- id-id then copy to id-001
+- fi-fi then copy to fi-001
+- it-it then copy to it-001
+- th-th then copy to th-001
+- tr-tr then copy to tr-001
+- vi-vn then copy to vi-001
+- zh-tw
+
+## Locale choice reasoning
+
+Where I live:
+
+- en-gb English - Great Britain
+- cy-gb Cymreag - Great Britain
+
+Worldwide top 3 order by count:
+
+- en-us English - United States
+- zh-cn Chinese - China
+- hi-in Hindi - India
+
+United Nations working languages:
+
+- en-us English - United States
+- zh-cn Chinese - China
+- es-es Spanish - Spain
+- fr-fr French - France
+- ar-eg Arabic - Egypt
+- ru-ru Russian - Russia
+
+Association of Southeast Asian Nations (ASEAN) working language:
+
+- en-001 English
+
+African Union working languages:
+
+- ar-eg Arabic - Egypt
+- en-us English - United States
+- fr-fr French - France
+- es-es Spanish - Spain
+- pt-pt Portuguese - Portugal
+- sw-tz Swahili - Tanzania
+
+Worldwide by country population:
+
+- id-id Indonesian - Indonesia
+- pt-br Portuguese - Brazil
+- es-mx Spanish - Mexico
+
+Eurpean Union top 3:
+
+- de-de German - Germany
+- fr-fr French - France
+- it-it Italian - Italy
+
+APAC top 3:
+
+- id-id Indonesian - Indonesia
+- ja-jp Japanese - Japan
+- vi-vn Vietnamese - Vietnam
+
+Nordic top 3:
+
+- sv-se Swedish - Sweden
+- da-dk Danish - Denmark
+- fi-fi Finnish - Finland
+
+Public value top 3:
+
+- zh-tw Chinese - Taiwan
+- ko-kr Korean - South Korea
+- nl-nl Dutch - Netherlands
+
+Worldwide top 10 order by count:
+
+- en-us English - United States
+- zh-cn Chinese - China
+- hi-in Hindi - India
+- es-es Spanish - Spain
+- fr-fr French - France
+- ar-eg Arabic - Egypt
+- bn-bd Bengali - Bangladesh
+- ru-ru Russian - Russia
+- pt-pt Portuguese - Portugal
+- ur-pn Urdu - Pakistan
+
+Public health government leadership recommendations:
+
+- da-dk Danish - Denmark
+- et-ee Estonian - Estonia
+
+Nordic countries order by count:
+
+- sv-se Swedish - Sweden
+- da-dk Danish - Denmark
+- fi-fi Finnish - Finland
+- nb-no Norwegian - Norway
+- is-is Icelandic - Iceland
+
+Countries that welcomed me:
+
+- vi-vn Vietnamese - Vietnam
+- lo-la Laotian - Lao
+- km-kh Cambodian - Cambodia
+- th-th Thai - Thailand
+
+Celtic top 3 order by proximity:
+
+- cy-cy Cymraeg - Cymru
+- gd-gb Scottish Gaelic - Scotland
+- ga-ie Irish - Ireland
+
+North America:
+
+- en-us
+- es-mx
+- fr-ca
+
+Eurpean Union order by speaker count:
+
+- de-de German - Germany
+- fr-fr France - French
+- it-it Italian - Italy
+- es-es Spanish - Spain
+- pl-pl Polish - Poland
+- ro-ro Romanian - Romania
+- nl-nl Dutch - Netherlands
+- cs-cz Czech - Czechia
+- sv-se Sweden - Swedish
+- pt-pt Portuguese - Portugal
+- hu-hu Hungarian - Hungary
+- de-at German - Austria
+- el-gr Greek - Greece
+- bg-bg Bulgarian - Bulgaria
+- da-dk Denmark - Danish
+- fi-fi Finnish - Finland
+- sk-sk Slovak - Slovakia
+- fr-be French - Belgium
+- hr-hr Croatian - Croatia
+- lt-lt Lithuanian - Lithuania
+- sl-si Slovenian - Slovenia
+- lv-lv Latvian - Latvia
+- et-ee Estonian - Estonia
+- el-cy Greek - Cyprus
+- lb-lu Luxembourgish - Luxembourg
+- mt-mt Maltese - Malta
+- ga-ie Irish - Ireland
+
+More languages with 50M+ speakers in order of count:
+
+- pa-001 ਪੰਜਾਬੀ Punjabi
+- mr-001 मराठी Marathi
+- te-001 తెలుగు Telugu
+- ha-001 Harshen Hausa Hausa
+- ta-001 தமிழ் Tamil
+- fa-001 فارسی Persian
+- jv-001 Basa Jawa Javanese
+- gu-001 ગુજરાતી Gujarati
+- bh-001 भोजपुरी Bhojpuri
+
+Supressed languages:
+
+- cy-gb Cymraeg Welsh
+- eu-001 Euskara Basque
+
+TODO:
+
+- hr-001 Hrvatski Croatian
+- hu-001 Magyar Hungarian
+- tr-001 Türkçe Turkish
