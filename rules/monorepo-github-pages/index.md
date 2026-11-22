@@ -12,9 +12,23 @@ The GitHub pages subproject uses:
 - [SvelteKit](https://svelte.dev/docs/kit/)
 - [Lily Design System](https://github.com/LilyDesignSystem/lily-design-system)
 
+## Git config
+
+The file `.git/config` must have a remote name github-page:
+
+```toml
+[remote "github-pages"]
+        url = git@github.com:<organization>/<orgnization>.github.io.git
+        fetch = +refs/heads/*:refs/remotes/github-pages/*
+```
+
 ## Publish
 
 To publish the GitHub pages subproject, use git subtree to derive a sibling top-level read-only export project: `~/git/<organization>/<repo>.github.io`
+
+File `Makefile` provides task `make github-pages` that delegates to POSIX shell script `bin/make-github-pages` that runs `git subtree push --prefix=<name>.github.io github-pages main`
+
+This pushes a subdirectory of your current repo out to a different branch (here main) on the remote named github-pages, using Git's subtree mechanism.
 
 ## Maintenance
 
